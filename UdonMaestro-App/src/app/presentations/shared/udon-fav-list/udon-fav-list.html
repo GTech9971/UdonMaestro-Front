@@ -1,0 +1,17 @@
+<ion-list [lines]="'none'">
+    <ion-list-header>
+        <ion-label>おすすめのうどんリスト</ion-label>
+    </ion-list-header>
+
+
+    <app-udon-fav-list-item [imgSrc]="'./assets/imgs/006.jpg'"></app-udon-fav-list-item>
+    <app-udon-fav-list-item [imgSrc]="'./assets/imgs/001.jpg'"></app-udon-fav-list-item>
+    <app-udon-fav-list-item [imgSrc]="'./assets/imgs/005.jpg'"></app-udon-fav-list-item>
+
+</ion-list>
+
+
+<ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+</ion-infinite-scroll>

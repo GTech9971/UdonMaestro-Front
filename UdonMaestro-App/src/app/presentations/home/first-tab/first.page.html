@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-row>
+    <ion-col>
+      <ion-text>
+        <h4>注目の店</h4>
+      </ion-text>
+    </ion-col>
+
+    <ion-col>
+      <ion-badge color="primary">もっと見る</ion-badge>
+    </ion-col>
+  </ion-row>
+
+  <!--画像リスト  -->
+  <swiper [pagination]="true" [loop]="true">
+    <ng-template swiperSlide>
+      <app-udon-card-mid [imgSrc]="'./assets/imgs/000.jpg'"></app-udon-card-mid>
+      <app-udon-card-mid [imgSrc]="'./assets/imgs/001.jpg'"></app-udon-card-mid>
+      <app-udon-card-mid [imgSrc]="'./assets/imgs/002.jpg'"></app-udon-card-mid>
+    </ng-template>
+
+    <ng-template swiperSlide>
+      <app-udon-card-mid [imgSrc]="'./assets/imgs/003.jpg'"></app-udon-card-mid>
+      <app-udon-card-mid [imgSrc]="'./assets/imgs/004.jpg'"></app-udon-card-mid>
+      <app-udon-card-mid [imgSrc]="'./assets/imgs/005.jpg'"></app-udon-card-mid>
+    </ng-template>
+
+    <ng-template swiperSlide>
+      <app-udon-card-mid [imgSrc]="'./assets/imgs/006.jpg'"></app-udon-card-mid>
+      <app-udon-card-mid [imgSrc]="'./assets/imgs/004.jpg'"></app-udon-card-mid>
+      <app-udon-card-mid [imgSrc]="'./assets/imgs/002.jpg'"></app-udon-card-mid>
+    </ng-template>
+  </swiper>
+
+  <!-- うどんリスト -->
+  <app-udon-fav-list></app-udon-fav-list>
+
+</ion-content>

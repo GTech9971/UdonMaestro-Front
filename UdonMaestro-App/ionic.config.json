@@ -1,0 +1,7 @@
+{
+  "name": "UdonMaestro-App",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
