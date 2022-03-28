@@ -7,6 +7,12 @@
 
 <ion-content [fullscreen]="true">
 
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button (click)="onClickRegistryPage()" color="danger">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
   <ion-row>
     <ion-col>
       <ion-text>
@@ -15,7 +21,11 @@
     </ion-col>
 
     <ion-col>
-      <ion-badge color="primary">もっと見る</ion-badge>
+      <p (click)="onClickMoreShop()">
+        <ion-chip outline color="primary">
+          <ion-label>もっと見る</ion-label>
+        </ion-chip>
+      </p>
     </ion-col>
   </ion-row>
 
@@ -42,5 +52,6 @@
 
   <!-- うどんリスト -->
   <app-udon-fav-list></app-udon-fav-list>
+
 
 </ion-content>

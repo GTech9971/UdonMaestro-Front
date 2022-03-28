@@ -1,0 +1,20 @@
+<ion-list [lines]="'none'">
+
+    <ion-row>
+        <ion-col>
+            <app-udon-card-mid [imgSrc]="'./assets/imgs/000.jpg'"></app-udon-card-mid>
+        </ion-col>
+
+        <ion-col>
+            <app-udon-card-mid [imgSrc]="'./assets/imgs/001.jpg'"></app-udon-card-mid>
+
+        </ion-col>
+    </ion-row>
+
+</ion-list>
+
+
+<ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+</ion-infinite-scroll>

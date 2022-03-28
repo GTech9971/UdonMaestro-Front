@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { RegistryPage } from '../../registry-page/registry.page';
 import { HomePage } from './home.page';
 
 const routes: Routes = [
@@ -30,6 +31,10 @@ const routes: Routes = [
     path: '',
     redirectTo: '/home/first-tab',
     pathMatch: 'full'
+  },
+  {
+    path: 'registry',
+    component: RegistryPage,
   }
 ];
 
