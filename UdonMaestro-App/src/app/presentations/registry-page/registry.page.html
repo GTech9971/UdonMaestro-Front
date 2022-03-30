@@ -4,73 +4,148 @@
             <ion-back-button defaultHref="/"></ion-back-button>
         </ion-buttons>
 
-        <ion-title>
+        <ion-title id="trigger-button" color="danger">
+            23/100
         </ion-title>
+
+        <ion-popover trigger="trigger-button" [arrow]="true">
+            <ng-template>
+                <ion-text color="primary" style="padding: 5px;">
+                    入力したお店の情報が詳しいほど数字が上がります
+                </ion-text>
+            </ng-template>
+        </ion-popover>
+
+        <ion-buttons slot="end">
+            <ion-button>
+                登録
+            </ion-button>
+        </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
 
     <form>
-        <ion-input type="text" placeholder="お店の名前を入力"></ion-input>
 
         <!-- 基本情報 -->
         <ion-list inset="true">
-            <!-- 店のタイプ -->
-            <ion-segment>
-                <ion-segment-button>一般店</ion-segment-button>
-                <ion-segment-button>セルフ店</ion-segment-button>
-                <ion-segment-button>製麺所</ion-segment-button>
-            </ion-segment>
 
-
-
-
-            <ion-list lines="none" slot="content">
-                <ion-list-header>時間</ion-list-header>
-                <ion-label>定休日</ion-label>
-                <ion-row>
-                    <ion-col *ngFor="let val of this.WEEKS ">
-                        <ion-label>{{val}}</ion-label>
-                        <br>
-                        <ion-checkbox checked></ion-checkbox>
-                    </ion-col>
-                </ion-row>
-
-                <ion-label>営業時間</ion-label>
+            <ion-list>
                 <ion-item>
-                    <ion-label>開始</ion-label>
-                    <ion-datetime presentation="time"></ion-datetime>
+                    <ion-label position="stacked">店名</ion-label>
+                    <ion-input type="text" placeholder="お店の名前を入力"></ion-input>
+                </ion-item>
+
+                <!-- 店のタイプ -->
+                <ion-item>
+                    <ion-label position="stacked">店のタイプ</ion-label>
+                    <ion-segment value="normal">
+                        <ion-segment-button value="normal">一般店</ion-segment-button>
+                        <ion-segment-button>セルフ店</ion-segment-button>
+                        <ion-segment-button>製麺所</ion-segment-button>
+                    </ion-segment>
                 </ion-item>
             </ion-list>
+
+            <!-- 時間 -->
+            <ion-accordion-group value="time">
+                <ion-accordion value="time">
+
+                    <ion-item slot="header">
+                        <ion-text>
+                            <h3>時間</h3>
+                        </ion-text>
+                    </ion-item>
+
+                    <ion-list slot="content">
+                        <ion-item>
+                            <ion-label position="stacked">定休日</ion-label>
+                            <ion-row>
+                                <ion-col *ngFor="let val of this.WEEKS " size="1.5">
+                                    <span>{{val}}</span>
+                                    <br>
+                                    <ion-checkbox checked></ion-checkbox>
+                                </ion-col>
+                            </ion-row>
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-label position="stacked">営業時間</ion-label>
+                            <ion-row>
+                                <ion-col button="true" id="open-start-input" detail>
+                                    <ion-input type="text" placeholder="開始時刻" name="start" [(ngModel)]="startTime"
+                                        readonly>
+                                    </ion-input>
+                                    <ion-popover trigger="open-start-input" show-backdrop="false">
+                                        <ng-template>
+                                            <ion-datetime #popoverstart presentation="time"
+                                                (ionChange)="startTime =formatDate(popoverstart.value)"></ion-datetime>
+                                        </ng-template>
+                                    </ion-popover>
+                                </ion-col>
+
+                                <ion-col style="display: flex; justify-content: space-evenly;align-items: center;">
+                                    <span>-</span>
+                                </ion-col>
+
+                                <ion-col button="true" id="open-end-input">
+                                    <ion-input type="text" placeholder="終了時刻" name="end" [(ngModel)]="endTime" readonly>
+                                    </ion-input>
+                                    <ion-popover trigger="open-end-input" show-backdrop="false">
+                                        <ng-template>
+                                            <ion-datetime #popoverend presentation="time"
+                                                (ionChange)="endTime =formatDate(popoverend.value)"></ion-datetime>
+                                        </ng-template>
+                                    </ion-popover>
+                                </ion-col>
+                            </ion-row>
+                        </ion-item>
+
+                    </ion-list>
+
+                </ion-accordion>
+            </ion-accordion-group>
 
             <!-- 住所 -->
             <ion-accordion-group value="address">
                 <ion-accordion value="address">
                     <ion-item slot="header">
-                        <ion-label>住所</ion-label>
+                        <ion-text>
+                            <h3>住所</h3>
+                        </ion-text>
                     </ion-item>
 
                     <ion-list slot="content">
                         <!-- 郵便番号 -->
-                        <ion-row>
-                            <ion-col size="1">
-                                <ion-icon [src]="'./assets/icon/address.svg'"></ion-icon>
-                            </ion-col>
-                            <ion-col size="3">
-                                <ion-input type="number" placeholder="761" minlength="3"></ion-input>
-                            </ion-col>
-                            <ion-col size="1">
-                                <span>-</span>
-                            </ion-col>
-                            <ion-col size="5">
-                                <ion-input type="number" placeholder="0123" minlength="4"></ion-input>
-                            </ion-col>
-                        </ion-row>
+                        <ion-item>
+                            <ion-label position="stacked">郵便番号</ion-label>
+                            <ion-row>
+                                <ion-col size="1" style="display: flex; align-items: center;">
+                                    <ion-icon [src]="'./assets/icon/address.svg'"></ion-icon>
+                                </ion-col>
+                                <ion-col size="3">
+                                    <ion-input type="number" placeholder="761" minlength="3"></ion-input>
+                                </ion-col>
+                                <ion-col size="1"
+                                    style="display: flex; justify-content: space-evenly;align-items: center;">
+                                    <span>-</span>
+                                </ion-col>
+                                <ion-col size="3">
+                                    <ion-input type="number" placeholder="0123" minlength="4"></ion-input>
+                                </ion-col>
+
+                                <ion-col size="4">
+                                    <ion-button>
+                                        自動入力
+                                    </ion-button>
+                                </ion-col>
+                            </ion-row>
+                        </ion-item>
 
                         <!-- 市町村 -->
                         <ion-item>
-                            <ion-label>市町村</ion-label>
+                            <ion-label position="stacked">市町村</ion-label>
                             <ion-select value="" multiple="false" placeholder="選択">
                                 <ion-select-option value="peperoni">Peperoni</ion-select-option>
                                 <ion-select-option value="hawaii">Hawaii</ion-select-option>
@@ -78,7 +153,7 @@
                         </ion-item>
 
                         <ion-item>
-                            <ion-label>町名・番地</ion-label>
+                            <ion-label position="stacked">町名・番地</ion-label>
                             <ion-input type="text" placeholder="番地・住所"></ion-input>
                         </ion-item>
 
