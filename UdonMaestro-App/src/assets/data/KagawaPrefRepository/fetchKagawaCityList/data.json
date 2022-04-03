@@ -1,0 +1,85 @@
+{
+    "StatusCode": 200,
+    "CityList": [
+        {
+            "CityCode": 0,
+            "CityName": "高松市",
+            "TownList": []
+        },
+        {
+            "CityCode": 1,
+            "CityName": "丸亀市",
+            "TownList": []
+        },
+        {
+            "CityCode": 2,
+            "CityName": "坂出市",
+            "TownList": []
+        },
+        {
+            "CityCode": 3,
+            "CityName": "善通寺市",
+            "TownList": []
+        },
+        {
+            "CityCode": 4,
+            "CityName": "さぬき市",
+            "TownList": []
+        },
+        {
+            "CityCode": 5,
+            "CityName": "東かがわ市",
+            "TownList": []
+        },
+        {
+            "CityCode": 6,
+            "CityName": "三豊市",
+            "TownList": []
+        },
+        {
+            "CityCode": 7,
+            "CityName": "土庄町",
+            "TownList": []
+        },
+        {
+            "CityCode": 8,
+            "CityName": "小豆島町",
+            "TownList": []
+        },
+        {
+            "CityCode": 9,
+            "CityName": "三木町",
+            "TownList": []
+        },
+        {
+            "CityCode": 10,
+            "CityName": "直島町",
+            "TownList": []
+        },
+        {
+            "CityCode": 11,
+            "CityName": "宇多津町",
+            "TownList": []
+        },
+        {
+            "CityCode": 12,
+            "CityName": "綾川町",
+            "TownList": []
+        },
+        {
+            "CityCode": 13,
+            "CityName": "琴平町",
+            "TownList": []
+        },
+        {
+            "CityCode": 14,
+            "CityName": "多度津町",
+            "TownList": []
+        },
+        {
+            "CityCode": 15,
+            "CityName": "まんのう町",
+            "TownList": []
+        }
+    ]
+}

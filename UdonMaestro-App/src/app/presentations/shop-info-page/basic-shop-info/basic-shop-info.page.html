@@ -1,0 +1,104 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/"></ion-back-button>
+        </ion-buttons>
+
+        <ion-title id="trigger-button">
+            お店の名前
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <!-- 基本情報 -->
+    <ion-card>
+        <ion-card-header>
+            <ion-card-subtitle>
+                <ion-badge color="primary">セルフ店</ion-badge>
+            </ion-card-subtitle>
+            <ion-card-title>お店の名前</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-item>
+                <ion-label position="stacked">定休日</ion-label>
+                <ion-row>
+                    <ion-col *ngFor="let val of this.WEEKS " size="1.5">
+                        <span>{{val}}</span>
+                        <br>
+                        <ion-checkbox checked></ion-checkbox>
+                    </ion-col>
+                </ion-row>
+
+                <ion-label position="stacked">営業時間</ion-label>
+                <ion-row>
+                    <ion-col>
+                        <ion-label position="stacked">開始時刻</ion-label>
+                        <ion-text>09:30</ion-text>
+                    </ion-col>
+                    <ion-col>
+                        <span>-</span>
+                    </ion-col>
+                    <ion-col>
+                        <ion-label position="stacked">終了時刻</ion-label>
+                        <ion-text>15:00</ion-text>
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+
+        </ion-card-content>
+    </ion-card>
+
+    <!--画像リスト  -->
+    <swiper [pagination]="true" [loop]="true">
+        <ng-template swiperSlide>
+            <ion-img [src]="'./assets/imgs/000.jpg'"></ion-img>
+            <ion-img [src]="'./assets/imgs/001.jpg'"></ion-img>
+            <ion-img [src]="'./assets/imgs/002.jpg'"></ion-img>
+        </ng-template>
+
+        <ng-template swiperSlide>
+            <ion-img [src]="'./assets/imgs/003.jpg'"></ion-img>
+            <ion-img [src]="'./assets/imgs/004.jpg'"></ion-img>
+            <ion-img [src]="'./assets/imgs/005.jpg'"></ion-img>
+        </ng-template>
+
+        <ng-template swiperSlide>
+            <ion-img [src]="'./assets/imgs/005.jpg'"></ion-img>
+            <ion-img [src]="'./assets/imgs/003.jpg'"></ion-img>
+            <ion-img [src]="'./assets/imgs/005.jpg'"></ion-img>
+        </ng-template>
+    </swiper>
+
+
+    <!-- 住所 -->
+    <ion-card>
+        <ion-card-header>
+            <ion-card-subtitle>住所</ion-card-subtitle>
+            <ion-card-title>香川県 XX市 YY町</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <!-- 郵便番号 -->
+            <ion-item>
+                <ion-label position="stacked">郵便番号</ion-label>
+                <ion-row>
+                    <ion-col style="display: flex; align-items: center;">
+                        <ion-icon [src]="'./assets/icon/address.svg'" style="padding-right: 5px;"></ion-icon>
+                        <ion-text>
+                            761-0301
+                        </ion-text>
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+
+            <!-- 市町村 -->
+            <ion-item>
+                <ion-label position="stacked">市町村 町名・番地</ion-label>
+                <ion-text>
+                    XX市 DDD町 AAA　5421-5
+                </ion-text>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+
+</ion-content>

@@ -1,4 +1,5 @@
 import { Component, Input } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
     selector: 'app-udon-card-mid',
@@ -7,9 +8,18 @@ import { Component, Input } from "@angular/core";
 })
 export class UdonCardMid {
 
+    constructor(private router: Router) { }
+
     /**
      * 画像のパス
      */
     @Input() imgSrc: string;
+
+    /**
+     * 詳細ページに移動する
+     */
+    async onClickMoveInfoPage() {
+        await this.router.navigate(['shop-info']);
+    }
 
 }

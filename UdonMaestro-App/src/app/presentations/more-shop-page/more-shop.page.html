@@ -1,0 +1,68 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/"></ion-back-button>
+        </ion-buttons>
+
+        <ion-title>
+            注目のお店
+        </ion-title>
+
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+    <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+        <ion-fab-button (click)="this.onClickRegistryPage()" color="danger">
+            <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+
+
+    <ion-list [lines]="'none'">
+        <ion-list-header>
+            <ion-label>おすすめのうどんリスト</ion-label>
+        </ion-list-header>
+
+        <ion-row>
+            <ion-row>
+                <ion-col>
+                    <app-udon-card-mid [imgSrc]="'./assets/imgs/000.jpg'"></app-udon-card-mid>
+                </ion-col>
+                <ion-col>
+                    <app-udon-card-mid [imgSrc]="'./assets/imgs/001.jpg'"></app-udon-card-mid>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col>
+                    <app-udon-card-mid [imgSrc]="'./assets/imgs/002.jpg'"></app-udon-card-mid>
+                </ion-col>
+                <ion-col>
+                    <app-udon-card-mid [imgSrc]="'./assets/imgs/003.jpg'"></app-udon-card-mid>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col>
+                    <app-udon-card-mid [imgSrc]="'./assets/imgs/004.jpg'"></app-udon-card-mid>
+                </ion-col>
+                <ion-col>
+                    <app-udon-card-mid [imgSrc]="'./assets/imgs/005.jpg'"></app-udon-card-mid>
+                </ion-col>
+            </ion-row>
+        </ion-row>
+
+    </ion-list>
+
+
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+
+</ion-content>

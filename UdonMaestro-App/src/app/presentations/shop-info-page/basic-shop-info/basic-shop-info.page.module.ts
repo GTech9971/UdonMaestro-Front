@@ -3,8 +3,8 @@ import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
 import { SwiperModule } from "swiper/angular";
-import { RegistryPageRoutingModule } from "./registry-routing.module";
-import { RegistryPage } from "./registry.page";
+import { BasicShopInfoRoutingModule } from "./basic-shop-info-routing.module";
+import { BasicShopInfoPage } from "./basic-shop-info.page";
 
 @NgModule({
     imports: [
@@ -12,8 +12,7 @@ import { RegistryPage } from "./registry.page";
         CommonModule,
         FormsModule,
         SwiperModule,
-        RegistryPageRoutingModule,
-    ],
-    declarations: [RegistryPage],
+        BasicShopInfoRoutingModule,
+    ], declarations: [BasicShopInfoPage]
 })
-export class RegistryPageModule { }
+export class BasicShopInfoModule { }

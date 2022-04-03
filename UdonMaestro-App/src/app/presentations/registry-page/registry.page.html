@@ -4,17 +4,10 @@
             <ion-back-button defaultHref="/"></ion-back-button>
         </ion-buttons>
 
-        <ion-title id="trigger-button" color="danger">
-            23/100
+        <ion-title>
+            お店情報を入力
         </ion-title>
 
-        <ion-popover trigger="trigger-button" [arrow]="true">
-            <ng-template>
-                <ion-text color="primary" style="padding: 5px;">
-                    入力したお店の情報が詳しいほど数字が上がります
-                </ion-text>
-            </ng-template>
-        </ion-popover>
 
         <ion-buttons slot="end">
             <ion-button>
@@ -24,41 +17,70 @@
     </ion-toolbar>
 </ion-header>
 
+<ion-header>
+    <ion-toolbar>
+        <ion-title id="trigger-button" color="danger"> 23/100</ion-title>
+    </ion-toolbar>
+
+    <ion-popover trigger="trigger-button" [arrow]="true">
+        <ng-template>
+            <ion-text color="primary" style="padding: 5px;">
+                入力したお店の情報が詳しいほど数字が上がります
+            </ion-text>
+        </ng-template>
+    </ion-popover>
+</ion-header>
+
 <ion-content [fullscreen]="true">
 
     <form>
 
         <!-- 基本情報 -->
-        <ion-list inset="true">
+        <swiper [pagination]="true" [navigation]="true">
+            <ng-template swiperSlide>
+                <ion-card>
+                    <ion-card-header>
+                        <ion-card-subtitle></ion-card-subtitle>
+                        <ion-card-title>お店の情報</ion-card-title>
+                    </ion-card-header>
 
-            <ion-list>
-                <ion-item>
-                    <ion-label position="stacked">店名</ion-label>
-                    <ion-input type="text" placeholder="お店の名前を入力"></ion-input>
-                </ion-item>
+                    <ion-card-content>
+                        <ion-item>
+                            <ion-label position="stacked">店名</ion-label>
+                            <ion-input type="text" placeholder="お店の名前を入力"></ion-input>
+                        </ion-item>
 
-                <!-- 店のタイプ -->
-                <ion-item>
-                    <ion-label position="stacked">店のタイプ</ion-label>
-                    <ion-segment value="normal">
-                        <ion-segment-button value="normal">一般店</ion-segment-button>
-                        <ion-segment-button>セルフ店</ion-segment-button>
-                        <ion-segment-button>製麺所</ion-segment-button>
-                    </ion-segment>
-                </ion-item>
-            </ion-list>
+                        <!-- 店のタイプ -->
+                        <ion-item>
+                            <ion-label position="stacked">店のタイプ</ion-label>
+                            <ion-segment value="normal">
+                                <ion-segment-button value="normal">一般店</ion-segment-button>
+                                <ion-segment-button>セルフ店</ion-segment-button>
+                                <ion-segment-button>製麺所</ion-segment-button>
+                            </ion-segment>
+                        </ion-item>
 
-            <!-- 時間 -->
-            <ion-accordion-group value="time">
-                <ion-accordion value="time">
 
-                    <ion-item slot="header">
-                        <ion-text>
-                            <h3>時間</h3>
-                        </ion-text>
-                    </ion-item>
+                        <ion-item>
+                            <ion-label position="stacked">コメント</ion-label>
+                            <ion-textarea placeholder="お店のコメントを入力" [rows]="5"></ion-textarea>
+                        </ion-item>
 
-                    <ion-list slot="content">
+
+                    </ion-card-content>
+
+                </ion-card>
+            </ng-template>
+
+            <!-- 営業時間 -->
+            <ng-template swiperSlide>
+                <ion-card>
+                    <ion-card-header>
+                        <ion-card-subtitle></ion-card-subtitle>
+                        <ion-card-title>営業時間</ion-card-title>
+                    </ion-card-header>
+                    <ion-card-content>
+
                         <ion-item>
                             <ion-label position="stacked">定休日</ion-label>
                             <ion-row>
@@ -68,9 +90,7 @@
                                     <ion-checkbox checked></ion-checkbox>
                                 </ion-col>
                             </ion-row>
-                        </ion-item>
 
-                        <ion-item>
                             <ion-label position="stacked">営業時間</ion-label>
                             <ion-row>
                                 <ion-col button="true" id="open-start-input" detail>
@@ -80,7 +100,8 @@
                                     <ion-popover trigger="open-start-input" show-backdrop="false">
                                         <ng-template>
                                             <ion-datetime #popoverstart presentation="time"
-                                                (ionChange)="startTime =formatDate(popoverstart.value)"></ion-datetime>
+                                                (ionChange)="startTime =formatDate(popoverstart.value)">
+                                            </ion-datetime>
                                         </ng-template>
                                     </ion-popover>
                                 </ion-col>
@@ -101,22 +122,18 @@
                                 </ion-col>
                             </ion-row>
                         </ion-item>
-
-                    </ion-list>
-
-                </ion-accordion>
-            </ion-accordion-group>
+                    </ion-card-content>
+                </ion-card>
+            </ng-template>
 
             <!-- 住所 -->
-            <ion-accordion-group value="address">
-                <ion-accordion value="address">
-                    <ion-item slot="header">
-                        <ion-text>
-                            <h3>住所</h3>
-                        </ion-text>
-                    </ion-item>
-
-                    <ion-list slot="content">
+            <ng-template swiperSlide>
+                <ion-card>
+                    <ion-card-header>
+                        <ion-card-subtitle></ion-card-subtitle>
+                        <ion-card-title>お店の住所</ion-card-title>
+                    </ion-card-header>
+                    <ion-card-content>
                         <!-- 郵便番号 -->
                         <ion-item>
                             <ion-label position="stacked">郵便番号</ion-label>
@@ -147,8 +164,10 @@
                         <ion-item>
                             <ion-label position="stacked">市町村</ion-label>
                             <ion-select value="" multiple="false" placeholder="選択">
-                                <ion-select-option value="peperoni">Peperoni</ion-select-option>
-                                <ion-select-option value="hawaii">Hawaii</ion-select-option>
+                                <ion-select-option *ngFor="let cityData of this.kagawaPrefCityListObserver | async"
+                                    value="{{cityData.CityCode}}">
+                                    {{cityData.CityName}}
+                                </ion-select-option>
                             </ion-select>
                         </ion-item>
 
@@ -157,10 +176,27 @@
                             <ion-input type="text" placeholder="番地・住所"></ion-input>
                         </ion-item>
 
-                    </ion-list>
+                        <ion-item [lines]="'none'">
+                            <ion-item slot="start" [lines]="'none'">
+                                <ion-label position="stacked">駐車場有</ion-label>
+                                <ion-checkbox></ion-checkbox>
+                            </ion-item>
 
-                </ion-accordion>
-            </ion-accordion-group>
-        </ion-list>
+                            <ion-item slot="end" [lines]="'none'">
+                                <ion-label style="font-size: 11px;" position="stacked">コインパーキング有</ion-label>
+                                <ion-checkbox></ion-checkbox>
+                            </ion-item>
+
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-label position="stacked">メモ</ion-label>
+                            <ion-input type="text" placeholder="坂ありなど"></ion-input>
+                        </ion-item>
+                    </ion-card-content>
+                </ion-card>
+            </ng-template>
+        </swiper>
+
     </form>
 </ion-content>

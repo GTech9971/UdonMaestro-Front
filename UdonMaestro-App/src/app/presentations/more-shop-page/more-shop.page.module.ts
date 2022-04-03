@@ -2,6 +2,7 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
+import { UdonCardMidModule } from "../shared/udon-card-mid/udon-card-mid.module";
 import { MoreShopPageRoutingModule } from "./more-shop-routing.module";
 import { MoreShopPage } from "./more-shop.page";
 
@@ -10,7 +11,8 @@ import { MoreShopPage } from "./more-shop.page";
         IonicModule,
         CommonModule,
         FormsModule,
-        MoreShopPageRoutingModule
+        UdonCardMidModule,
+        MoreShopPageRoutingModule,
     ], declarations: [MoreShopPage],
     exports: [MoreShopPage],
 })

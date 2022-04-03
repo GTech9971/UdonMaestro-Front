@@ -14,8 +14,8 @@ export class FirstPage {
   /**
    * 注目の店最大ページに移動する
    */
-  onClickMoreShop() {
-
+  async onClickMoreShop() {
+    await this.router.navigate(['more-shop']);
   }
 
   /**

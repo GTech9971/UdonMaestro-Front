@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { MoreShopPage } from '../../more-shop-page/more-shop.page';
 import { RegistryPage } from '../../registry-page/registry.page';
+import { ShopInfoPage } from '../../shop-info-page/shop-info.page';
 import { HomePage } from './home.page';
 
 const routes: Routes = [
@@ -35,7 +37,16 @@ const routes: Routes = [
   {
     path: 'registry',
     component: RegistryPage,
-  }
+  },
+  {
+    path: 'more-shop',
+    component: MoreShopPage,
+  },
+  {
+    path: 'shop-info',
+    redirectTo: '/shop-info/basic-shop-info',
+    component: ShopInfoPage
+  },
 ];
 
 @NgModule({
