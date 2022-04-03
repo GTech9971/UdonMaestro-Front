@@ -6,6 +6,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MoreShopPageModule } from './presentations/more-shop-page/more-shop.page.module';
 import { RegistryPageModule } from './presentations/registry-page/registry.page.module';
 
 @NgModule({
@@ -16,6 +17,7 @@ import { RegistryPageModule } from './presentations/registry-page/registry.page.
     IonicModule.forRoot(),
     AppRoutingModule,
     RegistryPageModule,
+    MoreShopPageModule,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
